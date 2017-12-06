@@ -1,5 +1,9 @@
 """
     extract data from 128*128 images
+    save it to data.csv
+    the first 128*128 columns will be red pixels;
+    following 128*128*2 columns are green and blue accordingly
+    the last column is experssion class
 """
 
 import csv

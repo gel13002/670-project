@@ -37,6 +37,7 @@ if __name__ == '__main__':
     image_names = os.listdir('resized_images_128')
     image_directory = buildDir('automatically_annotated.csv')
     image_folder = './resized_images_128'
+    count = 0
     with open('data.csv', 'w') as csvfile:
         writer = csv.writer(csvfile)
         for image_name in image_names:
@@ -53,7 +54,12 @@ if __name__ == '__main__':
                     img[:, :, 1] = np.array(gpixels).reshape([128,128])
                     img[:, :, 2] = np.array(bpixels).reshape([128,128])
                     plt.imshow(np.array(pixels))
-                    row = rpixels + gpixels + bpixels + [expression]
+                    # row = rpixels + gpixels + bpixels + [expression]
+                    row = list(img.reshape(-1)) + [expression]
+                    # testrow = np.array(row[:len(row)-1])
+                    # testrow = testrow.reshape([128,128,3])
+                    # plt.imshow(testrow)
                     writer.writerow(row)
+
 
 
